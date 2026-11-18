@@ -4,9 +4,6 @@ El Sistema de Denuncias Universitario permite presentar reportes, consultar su e
 
 Abre el sitio publicado o la dirección local que te haya indicado la persona administradora. En la pantalla inicial encontrarás las opciones **Presentar una denuncia**, **Consultar una denuncia** y **Acceso administrativo**.
 
-> [!CAUTION]
-> Las capturas incluidas son ejemplos y algunas muestran códigos de seguimiento, nombres de usuario de Telegram, enlaces de evidencias o descripciones. Antes de publicar este repositorio, confirma que sean datos ficticios o reemplázalos por capturas anonimizadas. Un código válido permite consultar información limitada de una denuncia; no lo compartas.
-
 ## 1. Guía para usuarios
 
 ### Presentar una denuncia
