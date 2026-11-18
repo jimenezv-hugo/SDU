@@ -10,6 +10,12 @@ Sistema web para registrar, revisar y dar seguimiento a denuncias universitarias
 
 ---
 
+## Documentación
+
+- [Manual de usuario](docs/MANUAL_USUARIO.md)
+- [Documentación del código](docs/DOCUMENTACION_CODIGO.md)
+- [Manual de despliegue: Docker, GitHub Pages y Render](docs/DESPLIEGUE.md)
+
 ## Arquitectura
 
 ```mermaid
@@ -115,12 +121,9 @@ Sistema de Denuncias Universitario/
 └── compose.yaml
 ```
 
-Más detalles técnicos: [`DOCUMENTACION_CODIGO.md`](docs/DOCUMENTACION_CODIGO.md).
-
 ## Despliegue con Docker Compose
 
 Consulta el [manual de despliegue local y web](docs/DESPLIEGUE.md) para ver los requisitos y pasos detallados.
-Para instrucciones de uso de la aplicación, consulta el [manual de usuario](docs/MANUAL_USUARIO.md).
 
 Para iniciar rápidamente con Docker Compose, copia el archivo de ejemplo:
 
