@@ -36,7 +36,27 @@ jobs:
 
       - name: Compilar Angular
         working-directory: Frontend-SDU
-        run: npm run build -- --base-href /SDU/
+        env:
+          SDU_API_URL: ${{ vars.SDU_API_URL }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFile, writeFile } from 'node:fs/promises';
+
+          const apiUrl = process.env.SDU_API_URL?.replace(/\/+$/, '');
+          if (!apiUrl || new URL(apiUrl).protocol !== 'https:') {
+            throw new Error('Configura la variable de repositorio SDU_API_URL con la URL HTTPS del backend en Render.');
+          }
+
+          const path = 'src/environments/environment.prod.ts';
+          const source = await readFile(path, 'utf8');
+          const updated = source.replace("apiUrl: '/api'", `apiUrl: ${JSON.stringify(apiUrl)}`);
+          if (updated === source) {
+            throw new Error(`No se encontró la URL base /api esperada en ${path}.`);
+          }
+          await writeFile(path, updated);
+          NODE
+          npm run build -- --base-href /SDU/
+        shell: bash
 
       - name: Crear página de respaldo para Angular
         run: cp Frontend-SDU/dist/sdu-frontend/browser/index.html Frontend-SDU/dist/sdu-frontend/browser/404.html

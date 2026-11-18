@@ -107,42 +107,34 @@ Sistema de Denuncias Universitario/
 │   ├── Dockerfile
 │   ├── nginx.conf
 │   └── package.json
-├── compose.yaml
-└── DOCUMENTACION_CODIGO.md
+├── docs/
+│   ├── DESPLIEGUE.md
+│   ├── DOCUMENTACION_CODIGO.md
+│   ├── MANUAL_USUARIO.md
+│   └── imagenes-manual-usuario/
+└── compose.yaml
 ```
 
-Más detalles técnicos: [`DOCUMENTACION_CODIGO.md`](DOCUMENTACION_CODIGO.md).
+Más detalles técnicos: [`DOCUMENTACION_CODIGO.md`](docs/DOCUMENTACION_CODIGO.md).
 
 ## Despliegue con Docker Compose
 
-1. Crea un archivo `.env` en la raíz del repositorio:
+Consulta el [manual de despliegue local y web](docs/DESPLIEGUE.md) para ver los requisitos y pasos detallados.
+Para instrucciones de uso de la aplicación, consulta el [manual de usuario](docs/MANUAL_USUARIO.md).
 
-```dotenv
-DATABASE_PASSWORD=clave-segura-de-base-de-datos
-SDU_ADMIN_USERNAME=admin
-SDU_ADMIN_PASSWORD=clave-segura-del-administrador
-TELEGRAM_BOT_TOKEN=
+Para iniciar rápidamente con Docker Compose, copia el archivo de ejemplo:
+
+```powershell
+Copy-Item .env.example .env
 ```
 
-Para el despliegue público, también configura en Render:
-
-```dotenv
-DATABASE_URL=jdbc:postgresql://HOST_INTERNO:5432/NOMBRE_BASE
-DATABASE_USERNAME=USUARIO_POSTGRESQL
-DATABASE_PASSWORD=CONTRASEÑA_POSTGRESQL
-APP_CORS_ALLOWED_ORIGINS=https://jivahxd-yt.github.io
-```
-
-El frontend de desarrollo usa `/api` y el build de producción usa la URL HTTPS configurada en
-`Frontend-SDU/src/environments/environment.prod.ts`.
-
-2. Construye y inicia los tres servicios:
+Reemplaza las contraseñas de ejemplo y construye e inicia los servicios:
 
 ```powershell
 docker compose up -d --build
 ```
 
-3. Accede a los servicios:
+Accede a los servicios:
 
 | Servicio | Dirección |
 |---|---|
